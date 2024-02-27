@@ -44,14 +44,14 @@ def grep2_O(pattern, files, ignore_case, count_only, exclude_pattern, include_pa
                                 count += 1
                                 if not count_only: # It is checking if the count_only is False.
                                     for ln, pline in prev_lines: 
-                                        print(f'{file_name if file_name else ""}:{ln if line_number else ""}:{pline.rstrip()}') # It is printing the file_name, line_number, and the previous line.
+                                        print(f'{file_name if file_name else ""} :{ln if line_number else ""}: {pline.rstrip()}') # It is printing the file_name, line_number, and the previous line.
                                     
                                     #lines 43 to 47 checks if the color_match option is enabled and it highlights the matching part of the line in red. 
                                     if color_match and match: 
                                         start = match.start() 
                                         end = match.end() 
                                         line = line[:start] + '\033[91m' + line[start:end] + '\033[0m' + line[end:] # It is adding the color to the matching line.
-                                    print(f'{file_name if file_name else ""}:{line_no if line_number else ""}:{line.rstrip()}') # It is printing the file_name, line_number, and the line.
+                                    print(f'{file_name if file_name else ""} :{line_no if line_number else ""}: {line.rstrip()}') # It is printing the file_name, line_number, and the line.
                                     
                                     #lines 50 to 56 checks if the context option is enabled and it also prints the specified number of lines before and after the matching line.
                                     for _ in range(context): 
@@ -59,7 +59,7 @@ def grep2_O(pattern, files, ignore_case, count_only, exclude_pattern, include_pa
                                         if line is None: 
                                             break
                                         line_no += 1 
-                                        print(f'{file_name if file_name else ""}:{line_no if line_number else ""}:{line.rstrip()}') # It is printing the file_name, line_number, and the line.
+                                        print(f'{file_name if file_name else ""} :{line_no if line_number else ""}: {line.rstrip()}') # It is printing the file_name, line_number, and the line.
                             prev_lines.append((line_no, line)) 
                 except IOError as e:
                     print(f'Error opening file {file_name}: {e}') # It prints a error message if there is a error in opening a file.
@@ -116,7 +116,8 @@ if __name__ == "__main__": # Here, it is checking if the __name__ is equal to __
    8. python pygrep.py -col 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and highlight the matching part of the line in red.)
    9. python pygrep.py -n 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and print the line number with each match.)
    10. python pygrep.py -H 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and print the file name for each match.)
-   11. python pygrep.py -i -c -excl '*.txt' -incl '*.txt' -r -con 2 -v -w -col -n -H 'hello' *.txt 
+   11. python pygrep.py -r 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and its subdirectories.) 
+   12. python pygrep.py -i -c -excl '*.txt' -incl '*.txt' -r -con 2 -v -w -col -n -H 'hello' *.txt 
    (it will search for the word "hello" in all .txt files in the current directory and its subdirectories. It will exclude files with "test" in their names. It will print 2 lines of context before and after each match. It will search for lines that do not contain the word "hello" and match whole words only. It will highlight the matching part of the line in red and print the line number and the file name for each match.)
    and so on.
 
