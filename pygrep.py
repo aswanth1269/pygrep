@@ -102,21 +102,21 @@ if __name__ == "__main__": # Here, it is checking if the __name__ is equal to __
 
 '''To run the program, you can save it to a file (e.g., pygrep.py) and run it from the command line with the desired options and arguments.
    That is use the cd command to navigate to the directory where you saved the python script. For example, if you saved it in a directory called pygrep on your desktop, you would type cd Desktop in the terminal.
-   Type python grep.py followed by the arguments you want to use.
-   For example, to search for the word "python" in all .txt files in the current directory, you would type "python grep.py python *.txt."
+   Type python pygrep.py followed by the arguments you want to use.
+   For example, to search for the word "python" in all .txt files in the current directory, you would type "python pygrep.py python *.txt."
 
    Some more examples are: 
-   1. python grep.py -i 'hello' *.txt( it will search for the word "hello" in all .txt files in the current directory and its subdirectories. It will ignore the case of the word "hello".)
-   2. python grep.py -c 'hello' *.txt( it will search for the word "hello" in all .txt files in the current directory and print the total number of matches.)
-   3. python grep.py -e '*test*' 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and its subdirectories. It will exclude files with "test" in their names.)
-   4. python grep.py -excl '*.txt' -incl '*.txt' -r 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and its subdirectories.)
-   5. python grep.py -con 2 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and print 2 lines of context before and after each match.)
-   6. python grep.py -v 'hello' *.txt (it will search for lines that do not contain the word "hello" in all .txt files in the current directory.)
-   7. python grep.py -w 'hello' *.txt (it will search for whole words only in all .txt files in the current directory.)
-   8. python grep.py -col 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and highlight the matching part of the line in red.)
-   9. python grep.py -n 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and print the line number with each match.)
-   10. python grep.py -H 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and print the file name for each match.)
-   11. python grep.py -i -c -excl '*.txt' -incl '*.txt' -r -con 2 -v -w -col -n -H 'hello' *.txt 
+   1. python pygrep.py -i 'hello' *.txt( it will search for the word "hello" in all .txt files in the current directory and its subdirectories. It will ignore the case of the word "hello".)
+   2. python pygrep.py -c 'hello' *.txt( it will search for the word "hello" in all .txt files in the current directory and print the total number of matches.)
+   3. python pygrep.py -e '*test*' 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and its subdirectories. It will exclude files with "test" in their names.)
+   4. python pygrep.py -excl '*.txt' -incl '*.txt' -r 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and its subdirectories.)
+   5. python pygrep.py -con 2 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and print 2 lines of context before and after each match.)
+   6. python pygrep.py -v 'hello' *.txt (it will search for lines that do not contain the word "hello" in all .txt files in the current directory.)
+   7. python pygrep.py -w 'hello' *.txt (it will search for whole words only in all .txt files in the current directory.)
+   8. python pygrep.py -col 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and highlight the matching part of the line in red.)
+   9. python pygrep.py -n 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and print the line number with each match.)
+   10. python pygrep.py -H 'hello' *.txt (it will search for the word "hello" in all .txt files in the current directory and print the file name for each match.)
+   11. python pygrep.py -i -c -excl '*.txt' -incl '*.txt' -r -con 2 -v -w -col -n -H 'hello' *.txt 
    (it will search for the word "hello" in all .txt files in the current directory and its subdirectories. It will exclude files with "test" in their names. It will print 2 lines of context before and after each match. It will search for lines that do not contain the word "hello" and match whole words only. It will highlight the matching part of the line in red and print the line number and the file name for each match.)
    and so on.
 
