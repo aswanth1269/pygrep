@@ -12,7 +12,7 @@ import os # Here, we are importing the os module to use the operating system dep
 from collections import deque # Here, we are importing the deque class from the collections module to use the double-ended queue and keep track of the previous.
 
 
-# 15th line defines the main function grep2_O with several parameters. Each parameter corresponds to a feature of the grep command Line.
+# 16th line defines the main function grep2_O with several parameters. Each parameter corresponds to a feature of the grep command Line.
 def grep2_O(pattern, files, ignore_case, count_only, exclude_pattern, include_pattern, recursive, context, invert_match, word_match, color_match, line_number, file_name):
     try:
         if word_match:                          # line 18 and 19 checks if the word_match option is enabled and it modifies the pattern to match whole words only.
