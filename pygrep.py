@@ -12,10 +12,10 @@ import os # Here, we are importing the os module to use the operating system dep
 from collections import deque # Here, we are importing the deque class from the collections module to use the double-ended queue and keep track of the previous.
 
 
-# 10th line defines the main function grep2_O with several parameters. Each parameter corresponds to a feature of the grep command Line.
+# 15th line defines the main function grep2_O with several parameters. Each parameter corresponds to a feature of the grep command Line.
 def grep2_O(pattern, files, ignore_case, count_only, exclude_pattern, include_pattern, recursive, context, invert_match, word_match, color_match, line_number, file_name):
     try:
-        if word_match:                          # line 12 and 13 checks if the word_match option is enabled and it modifies the pattern to match whole words only.
+        if word_match:                          # line 18 and 19 checks if the word_match option is enabled and it modifies the pattern to match whole words only.
             pattern = r'\b' + pattern + r'\b' 
         compiled_pattern = re.compile(pattern, re.IGNORECASE if ignore_case else 0) # This line compiles the regular expression pattern. If the ignore_case option is enabled, it uses the re.IGNORECASE flag to make the search case-insensitive.
         count = 0 # Here, it is initializing the count to 0.
@@ -26,34 +26,34 @@ def grep2_O(pattern, files, ignore_case, count_only, exclude_pattern, include_pa
                 continue
 
 
-            # Lines 24, 25, 26 and 27 checks if the recursive option is enabled and the current file is actually a directory, it recursively calls the grep function on each file in the directory and its subdirectories.
+            # Lines 30, 32, 33 and 34 checks if the recursive option is enabled and the current file is actually a directory, it recursively calls the grep function on each file in the directory and its subdirectories.
             if os.path.isdir(file_name) and recursive: 
                 for root, dirs, files in os.walk(file_name):   # it is iterating through the files in the directory.
                     for file in files:
                         grep2_O(pattern, [os.path.join(root, file)], ignore_case, count_only, exclude_pattern, include_pattern, False, context, invert_match, word_match, color_match, line_number, file_name) # it is calling the grep function with the pattern, file, ignore_case, count_only, exclude_pattern, include_pattern, False, context, invert_match, word_match, color_match, line_number, and file_name.
             elif os.path.isfile(file_name):
                 try:
-                    # lines 31 to 34 checks if the current file is a regular file and it opens the file and reads it line by line. For each line, it checks if the line matches the pattern.
+                    # lines 37 to 38 checks if the current file is a regular file and it opens the file and reads it line by line. For each line, it checks if the line matches the pattern.
                     with open(file_name, 'r') as f:
                         prev_lines = deque(maxlen=context)  
                         for line_no, line in enumerate(f, start=1):
                             match = compiled_pattern.search(line) # It is searching for the pattern in the line.
 
-                           #lines 37 to 41 checks if the invert_match option is enabled and it inverts the match result. If the line matches the pattern (or does not match, if invert_match is enabled), it increments the count and, unless the count_only option is enabled, prints the line along with the line number and filename, if those options are enabled.
+                           #lines 43 to 44 checks if the invert_match option is enabled and it inverts the match result. If the line matches the pattern (or does not match, if invert_match is enabled), it increments the count and, unless the count_only option is enabled, prints the line along with the line number and filename, if those options are enabled.
                             if invert_match == (not match): # It is checking if the invert_match is True and the match is False.
                                 count += 1
                                 if not count_only: # It is checking if the count_only is False.
                                     for ln, pline in prev_lines: 
                                         print(f'{file_name if file_name else ""} :{ln if line_number else ""}: {pline.rstrip()}') # It is printing the file_name, line_number, and the previous line.
                                     
-                                    #lines 43 to 47 checks if the color_match option is enabled and it highlights the matching part of the line in red. 
+                                    #lines 49 to 50 checks if the color_match option is enabled and it highlights the matching part of the line in red. 
                                     if color_match and match: 
                                         start = match.start() 
                                         end = match.end() 
                                         line = line[:start] + '\033[91m' + line[start:end] + '\033[0m' + line[end:] # It is adding the color to the matching line.
                                     print(f'{file_name if file_name else ""} :{line_no if line_number else ""}: {line.rstrip()}') # It is printing the file_name, line_number, and the line.
                                     
-                                    #lines 50 to 56 checks if the context option is enabled and it also prints the specified number of lines before and after the matching line.
+                                    #lines 57 to 58 checks if the context option is enabled and it also prints the specified number of lines before and after the matching line.
                                     for _ in range(context): 
                                         line = next(f, None) # It is getting the next line from the file.
                                         if line is None: 
@@ -64,7 +64,7 @@ def grep2_O(pattern, files, ignore_case, count_only, exclude_pattern, include_pa
                 except IOError as e:
                     print(f'Error opening file {file_name}: {e}') # It prints a error message if there is a error in opening a file.
 
-        # lines 62 and 63 checks if the count_only option is enabled and it prints the total number of matches.
+        # lines 68 and 69 checks if the count_only option is enabled and it prints the total number of matches.
         if count_only:
             print(f'Match count: {count}') #
     except Exception as e:
