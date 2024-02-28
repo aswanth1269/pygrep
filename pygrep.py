@@ -26,7 +26,7 @@ def grep2_O(pattern, files, ignore_case, count_only, exclude_pattern, include_pa
                 continue
 
 
-            # Lines 30, 32, 33 and 34 checks if the recursive option is enabled and the current file is actually a directory, it recursively calls the grep function on each file in the directory and its subdirectories.
+            # Lines 30, 31, 32 and 33 checks if the recursive option is enabled and the current file is actually a directory, it recursively calls the grep function on each file in the directory and its subdirectories.
             if os.path.isdir(file_name) and recursive: 
                 for root, dirs, files in os.walk(file_name):   # it is iterating through the files in the directory.
                     for file in files:
